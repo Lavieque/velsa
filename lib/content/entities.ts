@@ -45,7 +45,7 @@ export const projectBases: ProjectBase[] = [
     palette: ["#c96a2e", "#241a12"],
     pattern: "dots",
     relatedProduct: "tradeflow",
-    image: "/projetos/Real-Stiles.png",
+    image: "/projetos/Real-Stiles.jpg",
     // Served from a CDN rather than the repo. f_auto:video picks AV1/WebM for
     // browsers that support it, q_auto sets the quality and w_1280 matches the
     // widest the player is ever rendered: 14.4 MB source down to ~5 MB.
