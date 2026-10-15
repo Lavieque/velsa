@@ -5,7 +5,7 @@ export const en: Content = {
   profile: {
     tagline: "Technology & Digital Solutions",
     founderRole: "Founder & Software Developer",
-    availability: "Available for new projects from March 2026",
+    availability: "Available for new projects since 2024",
     location: "Portugal — working with companies nationwide",
   },
 
@@ -228,6 +228,30 @@ export const en: Content = {
         ],
         result:
           "Live in production, with an active catalogue across multiple categories and local payments integrated.",
+      },
+      "agro-trades": {
+        category: "Corporate website · CMS",
+        summary:
+          "A bilingual corporate site for a Mozambican farming company, with content the client edits themselves.",
+        description:
+          "A corporate website in Next.js for AGRO TRADES, LDA, with Portuguese and English content managed through a CMS and a contact form delivered by email.",
+        clientIntro:
+          "AGRO TRADES, LDA is a Mozambican farming company based in Nampula, growing in the Moma district, working in rice, cereals and vegetables, agricultural mechanisation and industrial processing.",
+        challengeHeading: "An online presence the company controls",
+        problem:
+          "The company had no online presence and needed to present its services and farming campaign to partners and institutions, in Portuguese and English, without depending on a developer every time the content changed.",
+        solution:
+          "I built the site in Next.js, with content held in Zod-validated files and edited by the client through TinaCMS, so they can change copy, services and images on their own. Every page exists in Portuguese and English, the contact form sends email through Resend, and direct contact runs through WhatsApp. The site is hosted on Vercel, with a JavaScript budget checked at build time.",
+        responsibilities: [
+          "Website development in Next.js",
+          "Bilingual content structure validated with Zod",
+          "TinaCMS integration for client-side editing",
+          "Contact form with email delivery via Resend",
+          "Technical SEO and a JavaScript budget checked at build time",
+          "Deployment and hosting on Vercel",
+        ],
+        result:
+          "Live in production at agrotrades.co.mz, bilingual and maintained by the client themselves.",
       },
     },
   },

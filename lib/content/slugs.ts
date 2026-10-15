@@ -19,6 +19,7 @@ export const serviceSlugs: Record<ServiceId, LocalizedSlug> = {
 
 export const projectSlugs: Record<ProjectId, LocalizedSlug> = {
   "real-stiles": { pt: "real-stiles", en: "real-stiles" },
+  "agro-trades": { pt: "agro-trades", en: "agro-trades" },
 };
 
 export const productSlugs: Record<ProductId, LocalizedSlug> = {

@@ -52,6 +52,16 @@ export const projectBases: ProjectBase[] = [
     video:
       "https://res.cloudinary.com/dme5v1jdh/video/upload/f_auto:video,q_auto,w_1280/v1791666021/Real-Stiles_sxtkcn.mp4",
   },
+  {
+    id: "agro-trades",
+    title: "Agro Trades",
+    year: "2026",
+    tags: ["Next.js", "TinaCMS", "Resend"],
+    href: "https://agrotrades.co.mz/",
+    palette: ["#3a8c2f", "#16240f"],
+    pattern: "waves",
+    image: "/projetos/Agro-Trades.jpg",
+  },
 ];
 
 export const productBases: ProductBase[] = [

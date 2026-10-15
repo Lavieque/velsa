@@ -12,7 +12,7 @@ export const serviceIds = [
   "maintenance",
   "consulting",
 ] as const;
-export const projectIds = ["real-stiles"] as const;
+export const projectIds = ["real-stiles", "agro-trades"] as const;
 export const productIds = ["tradeflow", "domios"] as const;
 
 export type ServiceId = (typeof serviceIds)[number];

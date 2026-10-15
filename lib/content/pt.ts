@@ -5,7 +5,7 @@ export const pt: Content = {
   profile: {
     tagline: "Tecnologia e Soluções Digitais",
     founderRole: "Fundador & Software Developer",
-    availability: "Disponível para novos projetos a partir de março de 2026",
+    availability: "Disponível para novos projetos desde 2024",
     location: "Portugal — a trabalhar com empresas em todo o país",
   },
 
@@ -230,6 +230,30 @@ export const pt: Content = {
         ],
         result:
           "Loja em produção, com catálogo ativo em múltiplas categorias e pagamento local integrado.",
+      },
+      "agro-trades": {
+        category: "Website institucional · CMS",
+        summary:
+          "Site institucional bilingue de uma empresa agrícola moçambicana, com conteúdo editável pelo cliente.",
+        description:
+          "Site institucional em Next.js para a AGRO TRADES, LDA, com conteúdo em português e inglês gerido num CMS e formulário de contacto por email.",
+        clientIntro:
+          "A AGRO TRADES, LDA é uma empresa agrícola moçambicana sediada em Nampula, com produção no Distrito de Moma, dedicada ao arroz, cereais e legumes, mecanização agrícola e processamento industrial.",
+        challengeHeading: "Presença online que a empresa controla",
+        problem:
+          "A empresa não tinha presença online e precisava de apresentar os seus serviços e a campanha agrícola a parceiros e instituições, em português e inglês, sem depender de um programador sempre que o conteúdo mudasse.",
+        solution:
+          "Desenvolvi o site em Next.js com conteúdo em ficheiros validados por Zod e editável pelo cliente através do TinaCMS, o que lhe permite alterar textos, serviços e imagens sozinho. Todas as páginas existem em português e inglês, o formulário de contacto envia email através do Resend, e o contacto direto faz-se por WhatsApp. O site está alojado na Vercel, com orçamento de JavaScript verificado no build.",
+        responsibilities: [
+          "Desenvolvimento do site em Next.js",
+          "Estrutura de conteúdo bilingue validada por Zod",
+          "Integração do TinaCMS para edição pelo cliente",
+          "Formulário de contacto com envio de email via Resend",
+          "SEO técnico e orçamento de JavaScript verificado no build",
+          "Publicação e alojamento na Vercel",
+        ],
+        result:
+          "Site em produção em agrotrades.co.mz, bilingue e mantido pelo próprio cliente.",
       },
     },
   },

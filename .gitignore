@@ -48,3 +48,6 @@ next-env.d.ts
 
 # media pesada: alojar em CDN em vez do historico git
 /public/projetos/*.mp4
+
+# swc native binding cache written by the dev server (see .claude/launch.json)
+/.swc-cache
