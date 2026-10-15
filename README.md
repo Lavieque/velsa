@@ -14,17 +14,31 @@ npm run dev
 
 Open <http://localhost:3000> — it redirects to `/pt`.
 
-### Windows: SWC native binding
+### Windows: SWC native binding cache
 
-`@swc/core` may fail to materialise its native binding when the default cache
-directory under `%LOCALAPPDATA%` has restrictive permissions, which breaks
-`next build` with `ERR_SWC_NATIVE_CACHE`. Point the cache somewhere writable.
-The path has to be absolute — a relative one is rejected with
-`ERR_SWC_NATIVE_CONFIGURATION`:
+Nothing to do — this is handled by `scripts/run-next.mjs`, which the `dev`,
+`build` and `start` scripts go through.
 
-```bash
-SWC_NATIVE_BINDING_CACHE="$PWD/.swc-cache" npm run build
+Next evaluates `next.config.ts`, which pulls in next-intl's plugin, which loads
+`@swc/core`. Before handing over the native addon, `@swc/core` materialises its
+payload into a cache directory and validates that directory's ACLs. On Windows
+the default root (`%LOCALAPPDATA%\swc`) is rejected — every ancestor under
+`AppData\Local` grants replacement rights to app-container SIDs — so the binding
+never loads and the build dies with `ERR_SWC_NATIVE_CACHE`:
+
 ```
+Error: Cannot find module './swc.win32-x64-msvc.node'
+```
+
+The wrapper points `SWC_NATIVE_BINDING_CACHE` at `~/.swc-native-cache` instead.
+Deriving it from the home directory keeps it machine-independent, satisfies the
+ACL check, and stays short enough that the cache lock file — the root plus a
+128-character hash — remains under the 260-character `MAX_PATH` limit. A cache
+root inside the repository passes the ACL check but exceeds `MAX_PATH` and fails
+with `os error 3`.
+
+An existing `SWC_NATIVE_BINDING_CACHE` is left untouched, and on non-Windows
+platforms the wrapper changes nothing.
 
 ## Scripts
 

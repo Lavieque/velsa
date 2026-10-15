@@ -40,8 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# swc native binding cache (local workaround)
-/.swc-cache
 
 # documentos internos (nao publicar)
 /motion.txt
