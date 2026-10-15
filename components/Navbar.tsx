@@ -2,8 +2,7 @@
 
 import { Menu, X } from "lucide-react";
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { motion } from "motion/react";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { profile, type Content, type Locale } from "@/lib/content";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 
@@ -33,6 +32,7 @@ export function Navbar({
   ui: { openMenu: string; closeMenu: string; switchLanguage: string };
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   // Reads the live scroll position without a mount effect, so the header is
   // already solid when the page is loaded part-way down.
@@ -69,23 +69,35 @@ export function Navbar({
         solid || menuOpen ? "bg-ink/90 backdrop-blur-md border-b border-line" : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-[100rem] items-center justify-between px-6 py-5 sm:px-10 lg:px-16">
+      <nav className="shell flex items-center justify-between py-5">
         <Link href="/" className="font-display text-xl tracking-tight text-parchment">
           {profile.brandShort}
           <span className="text-amber">.</span>
         </Link>
 
         <ul className="hidden items-center gap-9 md:flex">
-          {nav.map((link) => (
-            <li key={link.key}>
-              <Link
-                href={hrefByKey[link.key]}
-                className="underline-draw text-sm text-parchment-dim transition-colors hover:text-parchment"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+          {nav.map((link) => {
+            // A detail page belongs to its section, so /services/[slug] keeps
+            // "Services" marked as current.
+            const current = pathname === hrefByKey[link.key] ||
+              pathname.startsWith(`${hrefByKey[link.key]}/`);
+
+            return (
+              <li key={link.key}>
+                <Link
+                  href={hrefByKey[link.key]}
+                  aria-current={current ? "page" : undefined}
+                  className={`underline-draw text-sm transition-colors ${
+                    current
+                      ? "text-parchment [background-size:100%_1px]"
+                      : "text-parchment-dim hover:text-parchment"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="flex items-center gap-4">
@@ -114,34 +126,36 @@ export function Navbar({
         </div>
       </nav>
 
+      {/* Reports how far down the page the reader is. Driven by the scroll
+          position in CSS, so it costs nothing and cannot drift out of sync. */}
+      <span aria-hidden className="scroll-progress" />
+
       {menuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
-          className="border-t border-line bg-ink px-6 pb-8 pt-4 md:hidden"
-        >
-          <ul className="flex flex-col gap-1">
-            {nav.map((link) => (
-              <li key={link.key}>
-                <Link
-                  href={hrefByKey[link.key]}
-                  onClick={() => setMenuOpen(false)}
-                  className="block py-3 text-lg text-parchment"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link
-            href="/contact"
-            onClick={() => setMenuOpen(false)}
-            className="mt-4 inline-flex rounded-full bg-amber px-6 py-3 text-sm font-medium text-ink"
-          >
-            {ctaLabel}
-          </Link>
-        </motion.div>
+        <div className="menu-sheet border-t border-line bg-ink md:hidden">
+          <div className="shell pb-8 pt-2">
+            <ul className="flex flex-col divide-y divide-line">
+              {nav.map((link) => (
+                <li key={link.key}>
+                  <Link
+                    href={hrefByKey[link.key]}
+                    onClick={() => setMenuOpen(false)}
+                    aria-current={pathname === hrefByKey[link.key] ? "page" : undefined}
+                    className="block py-4 font-display text-lg text-parchment aria-[current=page]:text-amber-soft"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="btn-glow mt-6 inline-flex rounded-full bg-amber px-6 py-3 text-sm font-medium text-ink"
+            >
+              {ctaLabel}
+            </Link>
+          </div>
+        </div>
       )}
     </header>
   );

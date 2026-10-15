@@ -1,11 +1,13 @@
+import { ArrowRight } from "lucide-react";
 import { setRequestLocale } from "next-intl/server";
-import { AnimatedItem, AnimatedSection } from "@/components/AnimatedSection";
+import { Reveal } from "@/components/Reveal";
 import { Hero } from "@/components/Hero";
 import { ProblemStatement } from "@/components/ProblemStatement";
 import { Process } from "@/components/Process";
 import { ProductsGrid } from "@/components/ProductsGrid";
 import { ProjectsGrid } from "@/components/ProjectsGrid";
 import { ServicesGrid } from "@/components/ServicesGrid";
+import { StackStrip } from "@/components/StackStrip";
 import { Link } from "@/i18n/navigation";
 import { getContent, type Locale } from "@/lib/content";
 
@@ -27,32 +29,38 @@ export default async function Home({
         ctaPrimary={content.hero.ctaPrimary}
         ctaSecondary={content.hero.ctaSecondary}
       />
+      <StackStrip locale={locale} />
       <ProblemStatement locale={locale} />
       <ServicesGrid locale={locale} showCta />
       <Process locale={locale} />
       <ProjectsGrid locale={locale} limit={3} showCta />
       <ProductsGrid locale={locale} showCta />
 
-      <AnimatedSection className="border-t border-line" stagger={0.12}>
-        <div className="mx-auto max-w-3xl px-6 py-24 text-center sm:px-10 sm:py-32">
-          <AnimatedItem>
-            <h2 className="text-balance font-display text-3xl leading-tight text-parchment sm:text-4xl">
+      <section className="border-t border-line">
+        <div className="shell max-w-3xl py-24 text-center sm:py-32">
+          <Reveal>
+            <h2 className="text-balance font-display text-3xl leading-tight tracking-[-0.02em] text-parchment sm:text-4xl">
               {content.ctaFinal.headline}
             </h2>
-            <p className="mt-4 text-balance leading-relaxed text-parchment-dim">
+            <p className="mx-auto mt-4 max-w-[52ch] text-balance leading-relaxed text-parchment-dim">
               {content.ctaFinal.subhead}
             </p>
-          </AnimatedItem>
-          <AnimatedItem className="mt-8">
+          </Reveal>
+          <Reveal className="mt-9">
             <Link
               href="/contact"
-              className="btn-glow inline-flex items-center gap-2 rounded-full bg-amber px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03]"
+              className="btn-glow group inline-flex items-center gap-2 rounded-full bg-amber px-6 py-3 text-sm font-medium text-ink transition-transform duration-300 hover:scale-[1.03]"
             >
-              {content.ctaFinal.cta} <span aria-hidden>→</span>
+              {content.ctaFinal.cta}
+              <ArrowRight
+                aria-hidden
+                strokeWidth={2}
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+              />
             </Link>
-          </AnimatedItem>
+          </Reveal>
         </div>
-      </AnimatedSection>
+      </section>
     </>
   );
 }

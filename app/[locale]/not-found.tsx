@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { getContent, type Locale } from "@/lib/content";
@@ -22,8 +23,8 @@ export default async function NotFound() {
 
   return (
     <div className="mx-auto flex min-h-[70vh] max-w-2xl flex-col items-center justify-center px-6 py-32 text-center sm:px-10">
-      <span className="font-display text-6xl text-amber-soft sm:text-7xl">404</span>
-      <h1 className="mt-6 font-display text-3xl leading-tight text-parchment sm:text-4xl">
+      <span className="tnum font-display text-6xl tracking-[-0.04em] text-amber-soft sm:text-7xl">404</span>
+      <h1 className="mt-6 text-balance font-display text-3xl leading-tight tracking-[-0.02em] text-parchment sm:text-4xl">
         {text.title}
       </h1>
       <p className="mt-4 leading-relaxed text-parchment-dim">{text.body}</p>
@@ -31,9 +32,14 @@ export default async function NotFound() {
       <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
         <Link
           href="/"
-          className="btn-glow inline-flex items-center gap-2 rounded-full bg-amber px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03]"
+          className="btn-glow group inline-flex items-center gap-2 rounded-full bg-amber px-6 py-3 text-sm font-medium text-ink transition-transform duration-300 hover:scale-[1.03]"
         >
-          {text.home} <span aria-hidden>→</span>
+          {text.home}
+          <ArrowRight
+              aria-hidden
+              strokeWidth={2}
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            />
         </Link>
         <Link href="/contact" className="underline-draw text-sm text-parchment">
           {ctaLabel}

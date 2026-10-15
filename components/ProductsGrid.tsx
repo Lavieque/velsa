@@ -1,36 +1,39 @@
+import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getContent, getProducts, type Locale } from "@/lib/content";
-import { AnimatedItem, AnimatedSection } from "./AnimatedSection";
+import { Reveal } from "./Reveal";
 import { ProductCard } from "./ProductCard";
 
 export function ProductsGrid({
   locale,
   showIntro = true,
   showCta = false,
+  headingLevel = "h2",
 }: {
   locale: Locale;
   showIntro?: boolean;
   showCta?: boolean;
+  headingLevel?: "h1" | "h2";
 }) {
   const content = getContent(locale);
   const products = getProducts(locale);
+  const Heading = headingLevel;
 
   return (
-    <AnimatedSection className="border-y border-line bg-ink-soft/50" stagger={0.1}>
-      <div className="mx-auto max-w-[100rem] px-6 py-24 sm:px-10 sm:py-32">
-        <AnimatedItem className="max-w-xl">
-          <span className="text-xs uppercase tracking-[0.16em] text-amber-soft">
-            {content.products.eyebrow}
-          </span>
-          <h2 className="mt-5 font-display text-3xl leading-tight text-parchment sm:text-4xl">
+    <section className="border-y border-line bg-ink-soft/50">
+      <div className="shell py-24 sm:py-32">
+        <Reveal className="max-w-3xl">
+          <Heading className="text-balance font-display text-3xl leading-tight tracking-[-0.02em] text-parchment sm:text-4xl">
             {content.products.headline}
-          </h2>
+          </Heading>
           {showIntro && (
-            <p className="mt-4 leading-relaxed text-parchment-dim">{content.products.intro}</p>
+            <p className="mt-5 max-w-[58ch] text-pretty leading-relaxed text-parchment-dim">
+              {content.products.intro}
+            </p>
           )}
-        </AnimatedItem>
+        </Reveal>
 
-        <div className="mt-8">
+        <div className="mt-10 border-t border-line">
           {products.map((product) => (
             <ProductCard
               key={product.id}
@@ -42,13 +45,21 @@ export function ProductsGrid({
         </div>
 
         {showCta && (
-          <AnimatedItem className="mt-10">
-            <Link href="/products" className="underline-draw text-sm text-parchment">
-              {content.products.cta} →
+          <Reveal className="mt-10">
+            <Link
+              href="/products"
+              className="group inline-flex items-center gap-2 text-sm text-parchment"
+            >
+              <span className="underline-draw">{content.products.cta}</span>
+              <ArrowRight
+                aria-hidden
+                strokeWidth={1.5}
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+              />
             </Link>
-          </AnimatedItem>
+          </Reveal>
         )}
       </div>
-    </AnimatedSection>
+    </section>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import { AnimatedItem, AnimatedSection } from "@/components/AnimatedSection";
+import { Reveal } from "@/components/Reveal";
 import { Contact } from "@/components/Contact";
 import { getContent, profile, type Locale } from "@/lib/content";
 import { staticPageMetadata } from "@/lib/metadata";
@@ -25,16 +25,15 @@ export default async function ContactPage({
 
   return (
     <>
-      <AnimatedSection
-        className="mx-auto max-w-3xl px-6 pb-8 pt-32 sm:px-10 sm:pt-40"
-        stagger={0.1}
+      <section
+        className="shell pb-10 pt-36 sm:pt-44"
       >
-        <AnimatedItem>
-          <h1 className="text-balance font-display text-4xl leading-tight text-parchment sm:text-5xl">
+        <Reveal>
+          <h1 className="max-w-[20ch] text-balance font-display text-4xl leading-[1.05] tracking-[-0.035em] text-parchment sm:text-5xl lg:text-6xl">
             {contact.headline}
           </h1>
-        </AnimatedItem>
-      </AnimatedSection>
+        </Reveal>
+      </section>
       <Contact contact={contact} email={profile.email} socials={profile.socials} />
     </>
   );

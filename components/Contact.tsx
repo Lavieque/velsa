@@ -1,8 +1,9 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import { type FormEvent, useState } from "react";
 import type { Content } from "@/lib/content";
-import { AnimatedItem, AnimatedSection } from "./AnimatedSection";
+import { Reveal } from "./Reveal";
 
 const fieldClass =
   "rounded-lg border border-line bg-transparent px-4 py-3 text-parchment outline-none transition-colors focus:border-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber";
@@ -42,10 +43,10 @@ export function Contact({
   }
 
   return (
-    <AnimatedSection className="mx-auto max-w-[100rem] px-6 pb-28 sm:px-10 sm:pb-36" stagger={0.15}>
+    <section className="shell pb-28 sm:pb-36">
       <div className="grid gap-16 md:grid-cols-2 md:gap-20">
-        <AnimatedItem>
-          <p className="max-w-md leading-relaxed text-parchment-dim">{contact.subhead}</p>
+        <Reveal>
+          <p className="max-w-[48ch] text-pretty leading-relaxed text-parchment-dim">{contact.subhead}</p>
 
           <a
             href={`mailto:${email}`}
@@ -67,12 +68,12 @@ export function Contact({
               </a>
             ))}
           </div>
-        </AnimatedItem>
+        </Reveal>
 
-        <AnimatedItem
+        <Reveal
           as="form"
           onSubmit={handleSubmit}
-          className="flex flex-col gap-5 rounded-2xl border border-line p-8"
+          className="flex flex-col gap-5 rounded-2xl border border-line bg-ink-soft/40 p-6 sm:p-8"
         >
           <div className="grid gap-5 sm:grid-cols-2">
             <label className="flex flex-col gap-2 text-sm text-parchment-dim">
@@ -157,12 +158,17 @@ export function Contact({
 
           <button
             type="submit"
-            className="btn-glow mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-amber px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
+            className="btn-glow group mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-amber px-6 py-3 text-sm font-medium text-ink transition-transform duration-300 hover:scale-[1.02]"
           >
-            {form.submit} <span aria-hidden>→</span>
+            {form.submit}
+            <ArrowRight
+              aria-hidden
+              strokeWidth={2}
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            />
           </button>
-        </AnimatedItem>
+        </Reveal>
       </div>
-    </AnimatedSection>
+    </section>
   );
 }

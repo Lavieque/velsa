@@ -2,7 +2,7 @@
 
 Website of Velsa Digital — technology and digital solutions by [Virgílio José](https://github.com/Lavieque).
 
-Built with Next.js 16 (App Router), React 19, Tailwind CSS 4, Motion and next-intl.
+Built with Next.js 16 (App Router), React 19, Tailwind CSS 4 and next-intl. Every animation is CSS: the entrances run on scroll-driven timelines, so nothing on the page waits for a script.
 Fully bilingual (Portuguese and English) with translated routes and slugs.
 
 ## Getting started
@@ -18,10 +18,12 @@ Open <http://localhost:3000> — it redirects to `/pt`.
 
 `@swc/core` may fail to materialise its native binding when the default cache
 directory under `%LOCALAPPDATA%` has restrictive permissions, which breaks
-`next build` with `ERR_SWC_NATIVE_CACHE`. Point the cache somewhere writable:
+`next build` with `ERR_SWC_NATIVE_CACHE`. Point the cache somewhere writable.
+The path has to be absolute — a relative one is rejected with
+`ERR_SWC_NATIVE_CONFIGURATION`:
 
 ```bash
-SWC_NATIVE_BINDING_CACHE=./.swc-cache npm run build
+SWC_NATIVE_BINDING_CACHE="$PWD/.swc-cache" npm run build
 ```
 
 ## Scripts

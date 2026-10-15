@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { AnimatedItem, AnimatedSection } from "@/components/AnimatedSection";
+import { Reveal } from "@/components/Reveal";
 import { ServiceBanner } from "@/components/ServiceBanner";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
@@ -60,14 +61,19 @@ export default async function ServicePage({
     : undefined;
 
   return (
-    <AnimatedSection className="mx-auto max-w-6xl px-6 pb-28 pt-32 sm:px-10 sm:pt-40" stagger={0.12}>
-      <AnimatedItem>
-        <Link href="/services" className="underline-draw text-sm text-parchment-dim">
-          ← {ui.backToServices}
+    <section className="shell max-w-6xl pb-28 pt-36 sm:pt-44">
+      <Reveal>
+        <Link href="/services" className="group inline-flex items-center gap-2 text-sm text-parchment-dim transition-colors hover:text-parchment">
+          <ArrowLeft
+            aria-hidden
+            strokeWidth={1.5}
+            className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1"
+          />
+          {ui.backToServices}
         </Link>
-      </AnimatedItem>
+      </Reveal>
 
-      <AnimatedItem className="mt-6 aspect-[21/9] rounded-2xl border border-line">
+      <Reveal className="mt-6 aspect-[21/9] rounded-2xl border border-line">
         <ServiceBanner
           icon={service.icon}
           image={service.image}
@@ -76,36 +82,34 @@ export default async function ServicePage({
           priority
           className="h-full w-full rounded-2xl"
         />
-      </AnimatedItem>
+      </Reveal>
 
-      <AnimatedItem className="mt-10">
+      <Reveal className="mt-10">
         <h1 className="font-display text-4xl leading-tight text-parchment sm:text-5xl">
           {service.title}
         </h1>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-parchment-dim">
+        <p className="mt-5 max-w-[58ch] text-pretty text-lg leading-relaxed text-parchment-dim">
           {service.description}
         </p>
-      </AnimatedItem>
+      </Reveal>
 
-      <AnimatedItem className="mt-10 max-w-2xl">
+      <Reveal className="mt-10 max-w-2xl">
         <p className="leading-relaxed text-parchment-dim">{service.detail}</p>
-      </AnimatedItem>
+      </Reveal>
 
-      <AnimatedItem className="mt-14">
+      <Reveal className="mt-14">
         <h2 className="font-display text-xl text-parchment">{ui.whatsIncluded}</h2>
         <ul className="mt-4 space-y-2">
           {service.includes.map((item) => (
-            <li key={item} className="flex gap-3 text-parchment-dim">
-              <span aria-hidden className="text-amber-soft">
-                →
-              </span>
+            <li key={item} className="flex gap-4 text-pretty leading-relaxed text-parchment-dim">
+              <span aria-hidden className="mt-[0.7rem] h-px w-4 shrink-0 bg-amber" />
               {item}
             </li>
           ))}
         </ul>
-      </AnimatedItem>
+      </Reveal>
 
-      <AnimatedItem className="mt-14">
+      <Reveal className="mt-14">
         <h2 className="font-display text-xl text-parchment">{ui.advantages}</h2>
         <ul className="mt-4 grid gap-3 sm:grid-cols-2">
           {service.benefits.map((benefit) => (
@@ -117,35 +121,37 @@ export default async function ServicePage({
             </li>
           ))}
         </ul>
-      </AnimatedItem>
+      </Reveal>
 
       {relatedProject && (
-        <AnimatedItem className="mt-14 rounded-2xl border border-line p-8">
-          <span className="text-xs uppercase tracking-[0.16em] text-amber-soft">
+        <Reveal className="mt-14 rounded-2xl border border-line p-8">
+          <h2 className="text-xs uppercase tracking-[0.16em] text-amber-soft">
             {ui.caseStudy}
-          </span>
-          <h2 className="mt-3 font-display text-xl text-parchment">{relatedProject.title}</h2>
+          </h2>
+          <p className="mt-3 font-display text-xl text-parchment">{relatedProject.title}</p>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-parchment-dim">
             {relatedProject.summary}
           </p>
           <Link
             href={{ pathname: "/projects/[slug]", params: { slug: relatedProject.slug } }}
-            className="underline-draw mt-4 inline-flex items-center gap-2 text-sm text-parchment"
+            className="underline-draw group mt-4 inline-flex items-center gap-2 text-sm text-parchment"
           >
-            {ui.viewCaseStudy} <span aria-hidden>→</span>
+            {ui.viewCaseStudy}
+          <ArrowRight aria-hidden strokeWidth={1.5} className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
-        </AnimatedItem>
+        </Reveal>
       )}
 
-      <AnimatedItem className="mt-14 rounded-2xl border border-line bg-ink-soft p-8 text-center">
+      <Reveal className="mt-14 rounded-2xl border border-line bg-ink-soft p-8 text-center">
         <p className="text-parchment-dim">{ui.needHelpWith(service.title)}</p>
         <Link
           href="/contact"
-          className="btn-glow mt-4 inline-flex items-center gap-2 rounded-full bg-amber px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03]"
+          className="btn-glow group mt-5 inline-flex items-center gap-2 rounded-full bg-amber px-6 py-3 text-sm font-medium text-ink transition-transform duration-300 hover:scale-[1.03]"
         >
-          {content.ctaLabel} <span aria-hidden>→</span>
+          {content.ctaLabel}
+          <ArrowRight aria-hidden strokeWidth={1.5} className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
-      </AnimatedItem>
-    </AnimatedSection>
+      </Reveal>
+    </section>
   );
 }

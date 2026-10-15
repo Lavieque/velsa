@@ -22,15 +22,17 @@ export default async function Page({
   const { legal } = getContent(locale);
 
   return (
-    <div className="mx-auto max-w-2xl px-6 pb-28 pt-32 sm:px-10 sm:pt-40">
-      <h1 className="font-display text-4xl leading-tight text-parchment">
-        {legal.privacyTitle}
-      </h1>
-      <div className="mt-8 space-y-5 leading-relaxed text-parchment-dim">
-        {legal.privacyParagraphs.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
-      </div>
+    <div className="shell pb-28 pt-36 sm:pt-44">
+      <article className="max-w-[68ch]">
+        <h1 className="text-balance font-display text-4xl leading-[1.05] tracking-[-0.035em] text-parchment">
+          {legal.privacyTitle}
+        </h1>
+        <div className="mt-10 space-y-5 text-pretty leading-relaxed text-parchment-dim">
+          {legal.privacyParagraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </article>
     </div>
   );
 }

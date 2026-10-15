@@ -62,7 +62,7 @@ export function Footer({ locale }: { locale: Locale }) {
 
   return (
     <footer className="border-t border-line">
-      <div className="mx-auto max-w-[100rem] px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
+      <div className="shell py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1fr_1fr]">
           <div>
             <span className="font-display text-xl text-parchment">
@@ -85,7 +85,7 @@ export function Footer({ locale }: { locale: Locale }) {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-parchment"
+                        className="underline-draw transition-colors hover:text-parchment"
                       >
                         {link.label}
                       </a>
@@ -99,7 +99,7 @@ export function Footer({ locale }: { locale: Locale }) {
                               ({ pathname: link.href, params: link.params } as any)
                             : link.href
                         }
-                        className="hover:text-parchment"
+                        className="underline-draw transition-colors hover:text-parchment"
                       >
                         {link.label}
                       </Link>
@@ -111,7 +111,7 @@ export function Footer({ locale }: { locale: Locale }) {
           ))}
         </div>
 
-        <p className="mt-14 text-xs text-parchment-dim">
+        <p className="tnum mt-16 border-t border-line pt-8 text-xs text-parchment-dim">
           © {new Date().getFullYear()} {profile.brand}.
         </p>
       </div>

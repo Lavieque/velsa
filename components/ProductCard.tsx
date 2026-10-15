@@ -1,6 +1,7 @@
+import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Content, Product } from "@/lib/content";
-import { AnimatedItem } from "./AnimatedSection";
+import { Reveal } from "./Reveal";
 import { ProductVisual } from "./ProductVisual";
 
 export function ProductCard({
@@ -13,33 +14,53 @@ export function ProductCard({
   alt: Content["ui"]["alt"];
 }) {
   return (
-    <AnimatedItem
+    <Reveal
       as="article"
-      className="grid items-center gap-8 border-b border-line py-14 last:border-b-0 md:grid-cols-2 md:gap-14"
+      className="group grid items-center gap-8 border-b border-line py-16 last:border-b-0 md:grid-cols-2 md:gap-16"
     >
       <Link
         href={{ pathname: "/products/[slug]", params: { slug: product.slug } }}
-        className="relative block aspect-[3/2] overflow-hidden rounded-xl border border-line transition-opacity hover:opacity-90"
+        tabIndex={-1}
+        aria-hidden
+        className="relative block aspect-[3/2] overflow-hidden rounded-xl border border-line"
       >
-        <ProductVisual product={product} alt={alt} />
+        <div className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]">
+          <ProductVisual product={product} alt={alt} />
+        </div>
       </Link>
 
       <div>
-        <span className="text-xs uppercase tracking-[0.14em] text-amber-soft">
-          {product.category}
-        </span>
-        <h3 className="mt-2 font-display text-2xl text-parchment sm:text-3xl">
+        <h3 className="font-display text-2xl tracking-[-0.02em] text-parchment transition-colors duration-300 group-hover:text-amber-soft sm:text-3xl">
           {product.name}
         </h3>
-        <p className="mt-3 text-parchment-dim">{product.headline}</p>
+        <p className="mt-4 max-w-[58ch] text-pretty text-parchment-dim">{product.headline}</p>
+
+        <ul className="mt-6 flex flex-wrap gap-2">
+          <li className="rounded-full border border-amber/40 px-3 py-1 text-xs uppercase tracking-[0.1em] text-amber-soft">
+            {product.category}
+          </li>
+          {product.tags.map((tag) => (
+            <li
+              key={tag}
+              className="rounded-full border border-line px-3 py-1 text-xs text-parchment-dim"
+            >
+              {tag}
+            </li>
+          ))}
+        </ul>
 
         <Link
           href={{ pathname: "/products/[slug]", params: { slug: product.slug } }}
-          className="underline-draw mt-5 inline-flex items-center gap-2 text-sm text-parchment"
+          className="mt-7 inline-flex items-center gap-2 text-sm text-parchment"
         >
-          {discoverLabel} <span aria-hidden>→</span>
+          <span className="underline-draw">{discoverLabel}</span>
+          <ArrowRight
+            aria-hidden
+            strokeWidth={1.5}
+            className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+          />
         </Link>
       </div>
-    </AnimatedItem>
+    </Reveal>
   );
 }

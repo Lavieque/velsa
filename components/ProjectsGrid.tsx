@@ -1,33 +1,34 @@
+import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getContent, getProjects, type Locale } from "@/lib/content";
-import { AnimatedItem, AnimatedSection } from "./AnimatedSection";
+import { Reveal } from "./Reveal";
 import { ProjectCard } from "./ProjectCard";
 
 export function ProjectsGrid({
   locale,
   limit,
   showCta = false,
+  headingLevel = "h2",
 }: {
   locale: Locale;
   limit?: number;
   showCta?: boolean;
+  headingLevel?: "h1" | "h2";
 }) {
   const content = getContent(locale);
   const all = getProjects(locale);
   const items = limit ? all.slice(0, limit) : all;
+  const Heading = headingLevel;
 
   return (
-    <AnimatedSection className="mx-auto max-w-[100rem] px-6 py-24 sm:px-10 sm:py-32" stagger={0.08}>
-      <AnimatedItem className="max-w-xl">
-        <span className="text-xs uppercase tracking-[0.16em] text-amber-soft">
-          {content.projects.eyebrow}
-        </span>
-        <h2 className="mt-5 font-display text-3xl leading-tight text-parchment sm:text-4xl">
+    <section className="shell py-24 sm:py-32">
+      <Reveal className="max-w-2xl">
+        <Heading className="text-balance font-display text-3xl leading-tight tracking-[-0.02em] text-parchment sm:text-4xl">
           {content.projects.headline}
-        </h2>
-      </AnimatedItem>
+        </Heading>
+      </Reveal>
 
-      <div className="mt-8">
+      <div className="mt-10 border-t border-line">
         {items.map((project, i) => (
           <ProjectCard
             key={project.id}
@@ -40,12 +41,20 @@ export function ProjectsGrid({
       </div>
 
       {showCta && (
-        <AnimatedItem className="mt-10">
-          <Link href="/projects" className="underline-draw text-sm text-parchment">
-            {content.projects.cta} →
+        <Reveal className="mt-10">
+          <Link
+            href="/projects"
+            className="group inline-flex items-center gap-2 text-sm text-parchment"
+          >
+            <span className="underline-draw">{content.projects.cta}</span>
+            <ArrowRight
+              aria-hidden
+              strokeWidth={1.5}
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            />
           </Link>
-        </AnimatedItem>
+        </Reveal>
       )}
-    </AnimatedSection>
+    </section>
   );
 }

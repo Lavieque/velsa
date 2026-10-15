@@ -122,40 +122,32 @@ export type Content = {
     items: { problem: string; solution: string }[];
   };
   services: {
-    eyebrow: string;
     headline: string;
     intro: string;
     cta: string;
     items: Record<ServiceId, ServiceText>;
   };
   process: {
-    eyebrow: string;
     headline: string;
     steps: { number: string; title: string; description: string }[];
   };
   projects: {
-    eyebrow: string;
     headline: string;
     cta: string;
     items: Record<ProjectId, ProjectText>;
   };
   products: {
-    eyebrow: string;
     headline: string;
     intro: string;
     cta: string;
     items: Record<ProductId, ProductText>;
   };
   about: {
-    brandEyebrow: string;
     brandHeadline: string;
     brandParagraphs: string[];
-    founderEyebrow: string;
     founderParagraphs: string[];
-    timelineEyebrow: string;
     timelineHeadline: string;
     timeline: { period: string; role: string; org: string; description: string }[];
-    stackEyebrow: string;
     stackHeadline: string;
     technologies: { category: string; items: string[] }[];
   };

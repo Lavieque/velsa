@@ -1,33 +1,45 @@
+import { ArrowRight } from "lucide-react";
 import { getContent, type Locale } from "@/lib/content";
-import { AnimatedItem, AnimatedSection } from "./AnimatedSection";
+import { Reveal } from "./Reveal";
 
 export function ProblemStatement({ locale }: { locale: Locale }) {
   const { problems } = getContent(locale);
 
   return (
-    <AnimatedSection className="border-y border-line bg-ink-soft/50" stagger={0.1}>
-      <div className="mx-auto max-w-[100rem] px-6 py-24 sm:px-10 sm:py-32">
-        <AnimatedItem className="max-w-2xl">
-          <h2 className="text-balance font-display text-3xl leading-tight text-parchment sm:text-4xl">
+    <section className="border-y border-line bg-ink-soft/50">
+      <div className="shell py-24 sm:py-32">
+        <Reveal className="max-w-2xl">
+          <h2 className="text-balance font-display text-3xl leading-tight tracking-[-0.02em] text-parchment sm:text-4xl">
             {problems.headline}
           </h2>
-        </AnimatedItem>
+        </Reveal>
 
-        <div className="mt-12 divide-y divide-line border-t border-line">
+        <dl className="mt-14 border-t border-line">
           {problems.items.map((item) => (
-            <AnimatedItem
+            <Reveal
               key={item.problem}
-              className="flex flex-col gap-2 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8"
+              reveal="row"
+              className="relative grid gap-x-10 gap-y-2 py-6 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-baseline"
             >
-              <p className="text-parchment-dim">&ldquo;{item.problem}&rdquo;</p>
-              <p className="flex items-center gap-2 font-display text-lg text-amber-soft">
-                <span aria-hidden>→</span>
+              <span
+                aria-hidden
+                className="rule-draw absolute inset-x-0 bottom-0 h-px bg-line"
+              />
+              <dt className="max-w-[56ch] text-pretty text-parchment-dim">
+                &ldquo;{item.problem}&rdquo;
+              </dt>
+              <ArrowRight
+                aria-hidden
+                strokeWidth={1.5}
+                className="hidden h-4 w-4 shrink-0 translate-y-0.5 text-amber md:block"
+              />
+              <dd className="font-display text-lg text-amber-soft md:text-right">
                 {item.solution}
-              </p>
-            </AnimatedItem>
+              </dd>
+            </Reveal>
           ))}
-        </div>
+        </dl>
       </div>
-    </AnimatedSection>
+    </section>
   );
 }

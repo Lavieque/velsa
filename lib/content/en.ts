@@ -54,7 +54,6 @@ export const en: Content = {
   },
 
   services: {
-    eyebrow: "How I can help",
     headline: "I build custom digital solutions.",
     intro:
       "Every business has different needs. I develop technology that fits the processes, systems and goals of each project.",
@@ -191,7 +190,6 @@ export const en: Content = {
   },
 
   process: {
-    eyebrow: "How I work",
     headline: "From idea to solution.",
     steps: [
       { number: "01", title: "Discover", description: "Understand the business, the problem and the goals." },
@@ -204,7 +202,6 @@ export const en: Content = {
   },
 
   projects: {
-    eyebrow: "Selected work",
     headline: "Selected projects",
     cta: "See all projects",
     items: {
@@ -236,7 +233,6 @@ export const en: Content = {
   },
 
   products: {
-    eyebrow: "Own products",
     headline: "Products I've built.",
     intro:
       "Alongside client work, I build my own digital products to solve specific problems.",
@@ -274,21 +270,18 @@ export const en: Content = {
   },
 
   about: {
-    brandEyebrow: "About the brand",
     brandHeadline: "Technology with a purpose.",
     brandParagraphs: [
       `${profile.brand} was founded to build technology that solves real problems and helps companies move forward digitally.`,
       "I develop websites, applications, APIs, integrations, automation and custom software — always understanding the problem first, and choosing the technology second.",
       "Alongside client work, I build and run my own digital products.",
     ],
-    founderEyebrow: "Founder",
     founderParagraphs: [
       `I'm ${profile.founderName}, founder of ${profile.brand}. I develop software, specialising in backend and custom digital solutions.`,
       "I have experience building APIs, web applications, system integrations, databases and process automation.",
       "My work is about turning business needs into technology that works, balancing simplicity, performance, maintainability and room to grow.",
       `${profile.brand} is an extension of that path: building solutions for companies and creating my own technology products.`,
     ],
-    timelineEyebrow: "Background",
     timelineHeadline: "Professional experience",
     timeline: [
       {
@@ -306,7 +299,6 @@ export const en: Content = {
           "Development of digital solutions, technology services and own products.",
       },
     ],
-    stackEyebrow: "Stack",
     stackHeadline: "Technologies",
     technologies: [
       { category: "Backend", items: ["C#", ".NET", "Node.js", "Python", "Spring Boot"] },

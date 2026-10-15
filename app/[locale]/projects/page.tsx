@@ -23,7 +23,7 @@ export default async function Page({
 
   return (
     <div className="pt-16">
-      <ProjectsGrid locale={locale} />
+      <ProjectsGrid locale={locale} headingLevel="h1" />
     </div>
   );
 }

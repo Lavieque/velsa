@@ -54,7 +54,6 @@ export const pt: Content = {
   },
 
   services: {
-    eyebrow: "No que posso ajudar",
     headline: "Construo soluções digitais à medida.",
     intro:
       "Cada negócio tem necessidades diferentes. Desenvolvo soluções tecnológicas adaptadas aos processos, sistemas e objetivos de cada projeto.",
@@ -193,7 +192,6 @@ export const pt: Content = {
   },
 
   process: {
-    eyebrow: "Como trabalho",
     headline: "Da ideia à solução.",
     steps: [
       { number: "01", title: "Descobrir", description: "Compreender o negócio, problema e objetivos." },
@@ -206,7 +204,6 @@ export const pt: Content = {
   },
 
   projects: {
-    eyebrow: "Trabalho selecionado",
     headline: "Projetos selecionados",
     cta: "Ver todos os projetos",
     items: {
@@ -238,7 +235,6 @@ export const pt: Content = {
   },
 
   products: {
-    eyebrow: "Produtos próprios",
     headline: "Produtos que construí.",
     intro:
       "Além de desenvolver soluções para clientes, crio os meus próprios produtos digitais para resolver problemas específicos.",
@@ -276,21 +272,18 @@ export const pt: Content = {
   },
 
   about: {
-    brandEyebrow: "Sobre a marca",
     brandHeadline: "Tecnologia com propósito.",
     brandParagraphs: [
       `A ${profile.brand} nasceu com o objetivo de criar soluções tecnológicas capazes de resolver problemas reais e ajudar empresas a evoluir digitalmente.`,
       "Desenvolvo websites, aplicações, APIs, integrações, automações e software à medida, procurando compreender primeiro o problema e só depois definir a tecnologia adequada.",
       "Paralelamente ao desenvolvimento de soluções para clientes, crio e exploro produtos digitais próprios.",
     ],
-    founderEyebrow: "Fundador",
     founderParagraphs: [
       `Sou o ${profile.founderName}, fundador da ${profile.brand}. Desenvolvo software, com especialização em backend e em soluções digitais à medida.`,
       "Tenho experiência no desenvolvimento de APIs, aplicações web, integrações entre sistemas, bases de dados e automação de processos.",
       "O meu trabalho passa por transformar necessidades de negócio em soluções tecnológicas funcionais, procurando equilibrar simplicidade, desempenho, manutenção e capacidade de evolução.",
       `A ${profile.brand} nasce como uma extensão desse percurso, com o objetivo de desenvolver soluções para empresas e criar produtos tecnológicos próprios.`,
     ],
-    timelineEyebrow: "Percurso",
     timelineHeadline: "Experiência profissional",
     timeline: [
       {
@@ -308,7 +301,6 @@ export const pt: Content = {
           "Desenvolvimento de soluções digitais, serviços tecnológicos e produtos próprios.",
       },
     ],
-    stackEyebrow: "Stack",
     stackHeadline: "Tecnologias",
     technologies: [
       { category: "Backend", items: ["C#", ".NET", "Node.js", "Python", "Spring Boot"] },

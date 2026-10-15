@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { AnimatedItem, AnimatedSection } from "@/components/AnimatedSection";
+import { Reveal } from "@/components/Reveal";
 import { ProductVisual } from "@/components/ProductVisual";
 import { ProjectMedia } from "@/components/ProjectMedia";
 import { Link } from "@/i18n/navigation";
@@ -61,22 +61,24 @@ export default async function ProjectPage({
     : undefined;
 
   return (
-    <AnimatedSection className="mx-auto max-w-6xl px-6 pb-28 pt-32 sm:px-10 sm:pt-40" stagger={0.12}>
-      <AnimatedItem>
-        <Link href="/projects" className="underline-draw text-sm text-parchment-dim">
-          ← {ui.backToProjects}
+    <section className="shell max-w-6xl pb-28 pt-36 sm:pt-44">
+      <Reveal>
+        <Link href="/projects" className="group inline-flex items-center gap-2 text-sm text-parchment-dim transition-colors hover:text-parchment">
+          <ArrowLeft
+            aria-hidden
+            strokeWidth={1.5}
+            className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1"
+          />
+          {ui.backToProjects}
         </Link>
 
-        <span className="mt-6 block text-xs uppercase tracking-[0.16em] text-amber-soft">
-          {project.category}
-        </span>
         <a
           href={project.href}
           target="_blank"
           rel="noopener noreferrer"
           className="group mt-3 inline-flex items-center gap-2"
         >
-          <h1 className="font-display text-4xl leading-tight text-parchment transition-colors group-hover:text-amber-soft sm:text-5xl">
+          <h1 className="max-w-[18ch] text-balance font-display text-4xl leading-[1.05] tracking-[-0.035em] text-parchment transition-colors duration-300 group-hover:text-amber-soft sm:text-5xl">
             {project.title}
           </h1>
           <ArrowUpRight
@@ -84,47 +86,46 @@ export default async function ProjectPage({
             className="h-6 w-6 text-parchment-dim transition-colors group-hover:text-amber-soft"
           />
         </a>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-parchment-dim">
+        <p className="mt-4 text-xs uppercase tracking-[0.16em] text-amber-soft">{project.category}</p>
+        <p className="mt-5 max-w-[58ch] text-pretty text-lg leading-relaxed text-parchment-dim">
           {project.description}
         </p>
-      </AnimatedItem>
+      </Reveal>
 
-      <AnimatedItem className="relative mt-10 aspect-[3/2] overflow-hidden rounded-2xl border border-line">
+      <Reveal className="relative mt-10 aspect-[3/2] overflow-hidden rounded-2xl border border-line">
         <a href={project.href} target="_blank" rel="noopener noreferrer" className="absolute inset-0">
           <ProjectMedia project={project} priority allowVideo alt={ui.alt} />
         </a>
-      </AnimatedItem>
+      </Reveal>
 
-      <AnimatedItem className="mt-14 max-w-2xl border-l-2 border-line pl-6 text-parchment-dim">
+      <Reveal className="mt-14 max-w-[58ch] border-l border-amber/50 pl-6 text-pretty font-display text-lg leading-relaxed text-parchment-dim">
         {project.clientIntro}
-      </AnimatedItem>
+      </Reveal>
 
       <div className="mt-14 grid gap-10 sm:grid-cols-2">
-        <AnimatedItem>
+        <Reveal>
           <h2 className="font-display text-xl text-parchment">{project.challengeHeading}</h2>
-          <p className="mt-3 leading-relaxed text-parchment-dim">{project.problem}</p>
-        </AnimatedItem>
-        <AnimatedItem>
+          <p className="mt-3 max-w-[62ch] text-pretty leading-relaxed text-parchment-dim">{project.problem}</p>
+        </Reveal>
+        <Reveal>
           <h2 className="font-display text-xl text-parchment">{ui.theSolution}</h2>
-          <p className="mt-3 leading-relaxed text-parchment-dim">{project.solution}</p>
-        </AnimatedItem>
+          <p className="mt-3 max-w-[62ch] text-pretty leading-relaxed text-parchment-dim">{project.solution}</p>
+        </Reveal>
       </div>
 
-      <AnimatedItem className="mt-14">
+      <Reveal className="mt-14">
         <h2 className="font-display text-xl text-parchment">{ui.responsibility}</h2>
         <ul className="mt-4 space-y-2">
           {project.responsibilities.map((item) => (
-            <li key={item} className="flex gap-3 text-parchment-dim">
-              <span aria-hidden className="text-amber-soft">
-                →
-              </span>
+            <li key={item} className="flex gap-4 text-pretty leading-relaxed text-parchment-dim">
+              <span aria-hidden className="mt-[0.7rem] h-px w-4 shrink-0 bg-amber" />
               {item}
             </li>
           ))}
         </ul>
-      </AnimatedItem>
+      </Reveal>
 
-      <AnimatedItem className="mt-14">
+      <Reveal className="mt-14">
         <h2 className="font-display text-xl text-parchment">{ui.technologies}</h2>
         <ul className="mt-4 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
@@ -136,48 +137,50 @@ export default async function ProjectPage({
             </li>
           ))}
         </ul>
-      </AnimatedItem>
+      </Reveal>
 
-      <AnimatedItem className="mt-14 rounded-2xl border border-line bg-ink-soft p-8">
+      <Reveal className="mt-14 rounded-2xl border border-line bg-ink-soft p-8">
         <h2 className="font-display text-xl text-parchment">{ui.result}</h2>
         <p className="mt-3 leading-relaxed text-amber-soft">{project.result}</p>
-      </AnimatedItem>
+      </Reveal>
 
       {relatedProduct && (
-        <AnimatedItem className="mt-14 flex flex-col gap-6 rounded-2xl border border-line p-8 sm:flex-row sm:items-center">
+        <Reveal className="mt-14 flex flex-col gap-6 rounded-2xl border border-line p-8 sm:flex-row sm:items-center">
           {(relatedProduct.logoKey || relatedProduct.logoImage) && (
             <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl">
               <ProductVisual product={relatedProduct} alt={ui.alt} />
             </div>
           )}
           <div>
-            <span className="text-xs uppercase tracking-[0.16em] text-amber-soft">
+            <h2 className="text-xs uppercase tracking-[0.16em] text-amber-soft">
               {ui.ownProductUsedHere}
-            </span>
-            <h2 className="mt-3 font-display text-xl text-parchment">{relatedProduct.name}</h2>
+            </h2>
+            <p className="mt-3 font-display text-xl text-parchment">{relatedProduct.name}</p>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-parchment-dim">
               {relatedProduct.headline}
             </p>
             <Link
               href={{ pathname: "/products/[slug]", params: { slug: relatedProduct.slug } }}
-              className="underline-draw mt-4 inline-flex items-center gap-2 text-sm text-parchment"
+              className="underline-draw group mt-4 inline-flex items-center gap-2 text-sm text-parchment"
             >
-              {ui.discover(relatedProduct.name)} <span aria-hidden>→</span>
+              {ui.discover(relatedProduct.name)}
+          <ArrowRight aria-hidden strokeWidth={1.5} className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
-        </AnimatedItem>
+        </Reveal>
       )}
 
-      <AnimatedItem className="mt-14">
+      <Reveal className="mt-14">
         <a
           href={project.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline-draw inline-flex items-center gap-2 text-sm text-parchment"
+          className="underline-draw group inline-flex items-center gap-2 text-sm text-parchment"
         >
-          {ui.viewProjectLive} <span aria-hidden>→</span>
+          {ui.viewProjectLive}
+          <ArrowRight aria-hidden strokeWidth={1.5} className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </a>
-      </AnimatedItem>
-    </AnimatedSection>
+      </Reveal>
+    </section>
   );
 }
