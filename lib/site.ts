@@ -1,6 +1,6 @@
 import type { Locale } from "./content/types";
 
-export const baseUrl = "https://velsadigital.pt";
+export const baseUrl = "https://velsadigital.com";
 
 /** Canonical absolute URL for a visitor-facing path. */
 export function absoluteUrl(path: string) {

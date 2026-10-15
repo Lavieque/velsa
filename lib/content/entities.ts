@@ -5,7 +5,7 @@ export const profile = {
   brand: "Velsa Digital",
   brandShort: "Velsa",
   founderName: "Virgílio José",
-  email: "contacto@velsadigital.pt",
+  email: "contacto@velsadigital.com",
   socials: [
     {
       label: "LinkedIn",
