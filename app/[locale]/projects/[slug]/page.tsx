@@ -92,9 +92,16 @@ export default async function ProjectPage({
         </p>
       </Reveal>
 
-      <Reveal className="relative mt-10 aspect-[3/2] overflow-hidden rounded-2xl border border-line">
+      {/* 16:9 keeps the 1882x868 screenshots from being scaled up to fill a taller 3:2 frame. */}
+      <Reveal className="relative mt-10 aspect-[16/9] overflow-hidden rounded-2xl border border-line">
         <a href={project.href} target="_blank" rel="noopener noreferrer" className="absolute inset-0">
-          <ProjectMedia project={project} priority allowVideo alt={ui.alt} />
+          <ProjectMedia
+            project={project}
+            priority
+            allowVideo
+            alt={ui.alt}
+            sizes="(min-width: 1600px) 1800px, 122vw"
+          />
         </a>
       </Reveal>
 
