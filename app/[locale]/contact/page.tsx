@@ -34,7 +34,12 @@ export default async function ContactPage({
           </h1>
         </Reveal>
       </section>
-      <Contact contact={contact} email={profile.email} socials={profile.socials} />
+      <Contact
+        contact={contact}
+        email={profile.email}
+        phone={profile.phone}
+        socials={profile.socials}
+      />
     </>
   );
 }

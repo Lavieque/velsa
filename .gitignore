@@ -51,3 +51,4 @@ next-env.d.ts
 
 # swc native binding cache written by the dev server (see .claude/launch.json)
 /.swc-cache
+!.env.example

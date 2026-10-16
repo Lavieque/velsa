@@ -72,6 +72,34 @@ export function Footer({ locale }: { locale: Locale }) {
             <p className="mt-2 max-w-xs text-sm text-parchment-dim">
               {content.profile.tagline}
             </p>
+            <ul className="mt-5 space-y-2.5 text-sm text-parchment-dim">
+              <li>
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="underline-draw transition-colors hover:text-parchment"
+                >
+                  {profile.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${profile.phone.tel}`}
+                  className="underline-draw tnum transition-colors hover:text-parchment"
+                >
+                  {profile.phone.display}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={profile.phone.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline-draw transition-colors hover:text-parchment"
+                >
+                  WhatsApp
+                </a>
+              </li>
+            </ul>
           </div>
 
           {columns.map((column) => (

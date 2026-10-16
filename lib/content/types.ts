@@ -164,14 +164,14 @@ export type Content = {
       message: string;
       messagePlaceholder: string;
       submit: string;
-      /** Subject line of the pre-filled email. */
-      mailSubject: string;
-      mailLabels: {
-        name: string;
-        company: string;
-        email: string;
-        phone: string;
-        projectType: string;
+      sending: string;
+      success: string;
+      errors: {
+        invalid: string;
+        captcha: string;
+        rateLimit: string;
+        server: string;
+        network: string;
       };
     };
   };

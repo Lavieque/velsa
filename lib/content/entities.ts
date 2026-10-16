@@ -5,7 +5,12 @@ export const profile = {
   brand: "Velsa Digital",
   brandShort: "Velsa",
   founderName: "Virgílio José",
-  email: "contacto@velsadigital.com",
+  email: "geral@velsadigital.com",
+  phone: {
+    display: "+351 935 759 681",
+    tel: "+351935759681",
+    whatsapp: "https://wa.me/351935759681",
+  },
   socials: [
     {
       label: "LinkedIn",
