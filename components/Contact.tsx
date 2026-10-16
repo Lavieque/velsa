@@ -7,6 +7,7 @@ import { type FormEvent, useCallback, useEffect, useRef, useState } from "react"
 import { contactLimits, type ContactErrorCode } from "@/lib/contact-schema";
 import type { Content } from "@/lib/content";
 import { Reveal } from "./Reveal";
+import { Select } from "./Select";
 
 declare global {
   interface Window {
@@ -240,21 +241,12 @@ export function Contact({
             </label>
           </div>
 
-          <label className="flex flex-col gap-2 text-sm text-parchment-dim">
-            {form.projectType}
-            <select
-              name="projectType"
-              value={projectType}
-              onChange={(e) => setProjectType(e.target.value)}
-              className={`${fieldClass} bg-ink`}
-            >
-              {contact.projectTypes.map((type) => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
-          </label>
+          <Select
+            label={form.projectType}
+            options={contact.projectTypes}
+            value={projectType}
+            onChange={setProjectType}
+          />
 
           <label className="flex flex-col gap-2 text-sm text-parchment-dim">
             {form.message}
