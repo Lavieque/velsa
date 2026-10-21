@@ -154,6 +154,8 @@ export type Content = {
   contact: {
     headline: string;
     subhead: string;
+    /** Clarifies the cost of calling the phone number, shown next to it. */
+    phoneNote: string;
     projectTypes: string[];
     form: {
       name: string;

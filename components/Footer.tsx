@@ -87,7 +87,8 @@ export function Footer({ locale }: { locale: Locale }) {
                   className="underline-draw tnum transition-colors hover:text-parchment"
                 >
                   {profile.phone.display}
-                </a>
+                </a>{" "}
+                <span className="text-xs">{content.contact.phoneNote}</span>
               </li>
               <li>
                 <a

@@ -339,6 +339,7 @@ export const pt: Content = {
     headline: "Tem um problema que precisa de uma solução?",
     subhead:
       "Conte-me o que pretende desenvolver, melhorar ou automatizar. Analiso consigo a melhor abordagem.",
+    phoneNote: "(Chamada para rede móvel nacional)",
     projectTypes: [
       "Website",
       "Aplicação Web",

@@ -154,6 +154,7 @@ export function Contact({
             <a href={`tel:${phoneContact.tel}`} className="underline-draw tnum">
               {phoneContact.display}
             </a>
+            <span className="-ml-3 text-xs text-parchment-dim">{contact.phoneNote}</span>
             <a
               href={phoneContact.whatsapp}
               target="_blank"
