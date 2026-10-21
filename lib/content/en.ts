@@ -421,7 +421,8 @@ export const en: Content = {
     cookiesTitle: "Cookies",
     cookiesParagraphs: [
       `The ${profile.brand} website does not currently use third-party cookies for analytics or advertising.`,
-      "If analytics tools are introduced in future, this page will be updated and an appropriate consent mechanism will be shown, in line with the GDPR.",
+      "To understand how many people visit the website and which pages they read, Cloudflare Web Analytics is used. It uses no cookies or on-device storage, builds no visitor profiles and produces only aggregate statistics, so your consent is not required.",
+      "If tools that use analytics or advertising cookies are introduced in future, this page will be updated and an appropriate consent mechanism will be shown, in line with the GDPR.",
     ],
   },
 

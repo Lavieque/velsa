@@ -3,6 +3,7 @@ import { Fraunces, Archivo } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+import { Analytics } from "@/components/Analytics";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { routing } from "@/i18n/routing";
@@ -99,6 +100,7 @@ export default async function LocaleLayout({
           </main>
           <Footer locale={typedLocale} />
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );

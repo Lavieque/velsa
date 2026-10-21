@@ -423,7 +423,8 @@ export const pt: Content = {
     cookiesTitle: "Cookies",
     cookiesParagraphs: [
       `Atualmente, o website da ${profile.brand} não utiliza cookies de terceiros para efeitos de análise ou publicidade.`,
-      "Caso venham a ser introduzidas ferramentas de analytics no futuro, esta página será atualizada e será apresentado um mecanismo de consentimento adequado, em conformidade com o RGPD.",
+      "Para perceber quantas pessoas visitam o website e que páginas consultam, é utilizado o Cloudflare Web Analytics. Esta ferramenta não utiliza cookies nem armazenamento no dispositivo, não cria perfis de visitantes e produz apenas estatísticas agregadas, pelo que não é necessário o seu consentimento.",
+      "Caso venham a ser introduzidas ferramentas que utilizem cookies de análise ou publicidade, esta página será atualizada e será apresentado um mecanismo de consentimento adequado, em conformidade com o RGPD.",
     ],
   },
 
