@@ -104,7 +104,7 @@ export async function POST(request: Request) {
 
   const to = process.env.CONTACT_TO_EMAIL ?? profile.email;
   const from =
-    process.env.CONTACT_FROM_EMAIL ?? `${profile.brand} <noreply@velsadigital.com>`;
+    process.env.CONTACT_FROM_EMAIL ?? `${profile.brand} <no-reply@velsadigital.com>`;
 
   const rows: [string, string][] = [
     ["Nome / Name", data.name],
