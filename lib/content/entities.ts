@@ -77,7 +77,7 @@ export const productBases: ProductBase[] = [
     palette: ["#d97b3f", "#5a3420"],
     pattern: "grid",
     relatedProject: "real-stiles",
-    href: "https://tradeflow.realstiles.co.mz",
+    href: "https://www.tradeflow.pt",
     logoImage: "/produtos/Tradeflow.png",
   },
   {
@@ -86,7 +86,7 @@ export const productBases: ProductBase[] = [
     tags: [".NET", "PostgreSQL", "React", "Docker"],
     palette: ["#e9a266", "#2c2016"],
     pattern: "dots",
-    href: "https://domios-frontend.vercel.app",
+    href: "https://www.domios.pt",
     logoKey: "domios",
     logoBg: "#0f3f34",
   },
